@@ -1,0 +1,34 @@
+.h2-title_Menu {
+  cursor: pointer;
+  color: var(--primary-text-color);
+  z-index: 10;
+}
+
+.list_menu {
+  list-style: none;
+  cursor: pointer;
+}
+
+.link_menu {
+  margin: 15px;
+  padding-left: 2px;
+  color: var(--primary-text-color);
+}
+.link_menu:hover {
+  color: #777;
+}
+
+.hide-menu {
+  transform: translateY(-60px);
+  opacity: 0;
+  overflow: hidden;
+  display: none;
+  transition: transform 0.5s ease, display 0.5s ease;
+}
+
+/* .show-menu {
+ transform: translateY(60px); 
+  opacity: 1;
+  display: block;
+  transition: transform 0.5s ease, display 0.5s ease;
+} */

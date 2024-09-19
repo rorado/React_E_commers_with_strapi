@@ -1,0 +1,10 @@
+@media screen and (max-width: 599px) {
+  .search_header2 {
+    display: none !important;
+  }
+}
+@media screen and (min-width: 600px) {
+  .search_ic_header2 {
+    display: none !important;
+  }
+}

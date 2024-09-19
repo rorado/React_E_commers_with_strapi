@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "product_title": {
+      "type": "string",
+      "required": true
+    },
+    "product_desc": {
+      "type": "text",
+      "required": false
+    },
+    "product_price": {
+      "type": "decimal",
+      "required": true
+    },
+    "product_img": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "product_rating": {
+      "type": "decimal",
+      "required": true,
+      "max": 5,
+      "min": 0
+    },
+    "product_category": {
+      "type": "enumeration",
+      "enum": [
+        "men",
+        "women"
+      ],
+      "required": false
+    }
+  }
+}
