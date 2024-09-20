@@ -55,7 +55,7 @@ const Hero = () => {
       >
         {mySlider.map((item) => (
           <SwiperSlide key={item.gender}>
-            {isSmallScreen && <img src={item.src} width={"100px"} />}
+            {isSmallScreen && <img src={item.src} width={"100%"} />}
             <Box
               sx={{
                 position: "absolute",

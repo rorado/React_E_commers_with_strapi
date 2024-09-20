@@ -125,6 +125,7 @@ const Single_product = ({ handleClose, open, data }: IProp) => {
                     <SwiperSlide key={item.id}>
                       <img
                         src={item.url}
+                        width={"30%"}
                         alt={`Product ${item.id}`}
                         onClick={() => setImageUrl(item.url)}
                       />
