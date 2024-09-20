@@ -13,10 +13,10 @@
 }
 
 .swiper-slide img {
-  /* display: flex; */
-  width: 100%;
+  display: block;
+  width: 100% !important ;
   object-fit: cover;
-  object-position: left top;
+  cursor: pointer;
 }
 @media screen and (max-width: 900px) {
   .swiper-slide img {

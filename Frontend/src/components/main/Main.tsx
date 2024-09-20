@@ -1,9 +1,11 @@
 import { Box, Container, Skeleton, Stack, Typography } from "@mui/material";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import { Key, useEffect, useState } from "react";
+import { Key, useState } from "react";
 import Main_Product from "./Main_product";
 import { useGetproductByNameQuery } from "../../redux/product";
+
+import { AnimatePresence } from "framer-motion";
 
 export default function ColorToggleButton() {
   const [alignment, setAlignment] = useState("all");
@@ -157,31 +159,37 @@ export default function ColorToggleButton() {
               </Stack>
             ))}
 
-        {data &&
-          data.data.map(
-            (item: {
-              id: Key | null | undefined | number;
-              attributes: {
+        {data && (
+          <AnimatePresence>
+            {data.data.map(
+              (item: {
+                id: Key | null | undefined;
+                documentId: string;
                 product_desc: string;
                 product_price: number;
                 product_rating: number;
                 product_title: string;
-                product_img: { data: { attributes: { url: string } }[] };
-              };
-            }) => (
-              <Main_Product
-                key={item.id}
-                productId={item.id}
-                desc={item.attributes.product_desc}
-                price={item.attributes.product_price}
-                rating={item.attributes.product_rating}
-                title={item.attributes.product_title}
-                img_src={`${import.meta.env.VITE_BASE_URL}${
-                  item.attributes.product_img.data[0].attributes.url
-                }`}
-              />
-            )
-          )}
+                product_img: { url: string }[];
+              }) => (
+                <Main_Product
+                  key={item.id}
+                  productId={item.documentId}
+                  desc={item.product_desc}
+                  price={item.product_price}
+                  rating={item.product_rating}
+                  title={item.product_title}
+                  img_src={item.product_img[0].url}
+                />
+              )
+            )}
+          </AnimatePresence>
+        )}
+        {error && (
+          <Container sx={{ py: 11, textAlign: "center" }}>
+            <Typography variant="h5">{error.error}</Typography>
+            <Typography variant="h5">Please try again later</Typography>
+          </Container>
+        )}
       </Box>
     </Container>
   );

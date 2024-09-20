@@ -18,8 +18,8 @@ interface Iprop {
 
 const Tollips = ({ options, title }: Iprop) => {
   const [open, setOpen] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [option, setOption] = useState<string>("");
+
+  // const [option, setOption] = useState<string>("");
 
   const handleToggle = () => {
     setOpen(true);
@@ -60,7 +60,7 @@ const Tollips = ({ options, title }: Iprop) => {
                   key={option}
                   onClick={() => {
                     handleClose();
-                    setOption(option);
+                    // setOption(option);
                   }}
                 >
                   <ListItemText primary={option} />

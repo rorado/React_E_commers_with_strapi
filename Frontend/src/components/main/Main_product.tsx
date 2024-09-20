@@ -8,6 +8,7 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useState } from "react";
 import Single_product from "../product/Single_product";
 import { useGetproductByNameQuery } from "../../redux/product";
+import { motion } from "framer-motion";
 
 interface IProp {
   title: string;
@@ -15,7 +16,7 @@ interface IProp {
   img_src: string;
   desc: string;
   rating: number;
-  productId: number;
+  productId: string;
 }
 
 const Main_Product = ({
@@ -33,7 +34,13 @@ const Main_Product = ({
   const { data } = useGetproductByNameQuery(`products/${productId}?populate=*`);
 
   return (
-    <Box>
+    <Box
+      component={motion.section}
+      layout
+      initial={{ transform: "scale(0)" }}
+      animate={{ transform: "scale(1)" }}
+      transition={{ duration: 1.6, type: "spring", stiffness: 50 }}
+    >
       <Card
         onClick={handleOpen}
         sx={{

@@ -27,7 +27,7 @@ const style = {
   alignItems: "center",
   gap: 1,
   border: "none",
-  // overflow: "hidden",
+  overflow: "hidden",
 };
 
 interface IProp {
@@ -40,11 +40,7 @@ interface IProp {
 const Single_product = ({ handleClose, open, data }: IProp) => {
   const boxRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
-  const [imageUrl, setImageUrl] = useState(
-    `${import.meta.env.VITE_BASE_URL}${
-      data.data.attributes.product_img.data[0].attributes.url
-    }`
-  );
+  const [imageUrl, setImageUrl] = useState(data.data.product_img[0].url);
 
   const updateWidth = () => {
     if (boxRef.current) {
@@ -94,14 +90,12 @@ const Single_product = ({ handleClose, open, data }: IProp) => {
           </Box>
 
           <Box ref={boxRef} sx={{ flexGrow: 1, width: "100%", px: "6%" }}>
-            <Typography variant="h4">
-              {data.data.attributes.product_title}
-            </Typography>
+            <Typography variant="h4">{data.data.product_title}</Typography>
             <Typography variant="h4" color="red">
-              {data.data.attributes.product_price}$
+              {data.data.product_price}$
             </Typography>
             <Typography variant="body1" sx={{ my: 1 }}>
-              {data.data.attributes.product_desc}
+              {data.data.product_desc}
             </Typography>
 
             <Swiper
@@ -126,25 +120,13 @@ const Single_product = ({ handleClose, open, data }: IProp) => {
               style={{ maxWidth: width }}
             >
               {data &&
-                data.data.attributes.product_img.data.map(
-                  (item: {
-                    id: Key | null | undefined;
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    attributes: { url: any };
-                  }) => (
+                data.data.product_img.map(
+                  (item: { id: Key | null | undefined; url: string }) => (
                     <SwiperSlide key={item.id}>
                       <img
-                        src={`${import.meta.env.VITE_BASE_URL}${
-                          item.attributes.url
-                        }`}
+                        src={item.url}
                         alt={`Product ${item.id}`}
-                        onClick={() =>
-                          setImageUrl(
-                            `${import.meta.env.VITE_BASE_URL}${
-                              item.attributes.url
-                            }`
-                          )
-                        }
+                        onClick={() => setImageUrl(item.url)}
                       />
                     </SwiperSlide>
                   )

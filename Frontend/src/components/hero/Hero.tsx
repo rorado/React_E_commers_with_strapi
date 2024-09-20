@@ -20,8 +20,8 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "./Hero.css";
 
 const mySlider = [
-  { gender: "MEN", src: "src/public/images/banner-15.jpg" },
-  { gender: "WOMEN", src: "src/public/images/banner-25.jpg" },
+  { gender: "MEN", src: "./images/banner-15.jpg" },
+  { gender: "WOMEN", src: "./images/banner-25.jpg" },
 ];
 
 const Hero = () => {
@@ -44,7 +44,7 @@ const Hero = () => {
       <Swiper
         loop={true}
         autoplay={{
-          delay: 5000,
+          delay: 5000000000,
           disableOnInteraction: false,
         }}
         pagination={{
@@ -55,8 +55,7 @@ const Hero = () => {
       >
         {mySlider.map((item) => (
           <SwiperSlide key={item.gender}>
-            {isSmallScreen && <img src={item.src} />}
-
+            {isSmallScreen && <img src={item.src} width={"100px"} />}
             <Box
               sx={{
                 position: "absolute",
@@ -119,7 +118,7 @@ const Hero = () => {
             <img
               width={"100%"}
               height={"100%"}
-              src="src/public/images/banner-17.jpg"
+              src="./images/banner-17.jpg"
               alt=""
             />
 
@@ -183,7 +182,7 @@ const Hero = () => {
             <img
               width={"100%"}
               height={"100%"}
-              src="src/public/images/banner-16.jpg"
+              src="./images/banner-16.jpg"
               alt=""
             />
             <Stack
